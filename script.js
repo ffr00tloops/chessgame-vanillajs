@@ -1,7 +1,4 @@
-
 executed = false;
-
-
 document.querySelector("#startGame").onclick = () => {
 
     window.scrollTo(0,document.body.scrollHeight);
