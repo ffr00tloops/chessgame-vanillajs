@@ -46,6 +46,7 @@ document.querySelector("#startGame").onclick = () => {
         div.ondragover = (ev) => {
             ev.preventDefault();
         }
+
         
         document.querySelector("chessboard").
         appendChild(div)
@@ -54,18 +55,72 @@ document.querySelector("#startGame").onclick = () => {
     }
 
     function chesspieces() {
-        blackKing = document.createElement('img')
-        blackKing.src = './chesspieces/bK.svg'
-        blackKing.draggable = true
-        blackKing.id = 'blackKing'
-        blackKing.style.maxWidth = "40px";
-        blackKing.style.maxHeight = "40px";
-        blackKing.ondragstart = (ev) => {
-            ev.dataTransfer.setData("text", ev.target.id)
+
+        let chesspiecesname = ["blackKing", "blackBishop","blackKnight","blackPawn","blackQueen","blackRook", "whiteKing", "whiteBishop", "whiteKnight", "whitePawn", "whiteQueen", "whiteRook"]
+
+        let chesspiecesvalue = []
+
+        for (let i = 0; i < 12; i++) {
+            chesspiecesvalue[i] = document.createElement('img')           
+        }
+        
+        for (let i = 0; i < 12; i++) {
+
+            if (chesspiecesname[i] == "blackPawn") {
+
+                blackPawn = []
+ 
+                for (let k = 0; k < 10; k++ ) {
+                    blackPawn[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 8; j++) {
+                    blackPawn[j].id = chesspiecesname[i] + j
+                    blackPawn[j].src = `./chesspieces/bP.svg`
+                    blackPawn[j].draggable = true
+                    blackPawn[j].style.maxWidth = "50px"
+                    blackPawn[j].style.maxHeight = "50px"
+                    blackPawn[j].addEventListener("dragstart", dragStart)
+                    
+                    document.querySelector("chessboard").children.item(j + 8).appendChild(blackPawn[j])
+
+                }                    
+                
+                
+            }
+
+            else if(chesspiecesname[i] == "whitePawn") {
+                whitePawn = []
+ 
+                for (let k = 0; k < 10; k++ ) {
+                    whitePawn[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 8; j++) {
+                    whitePawn[j].id = chesspiecesname[i] + j
+                    whitePawn[j].src = `./chesspieces/wP.svg`
+                    whitePawn[j].draggable = true
+                    whitePawn[j].style.maxWidth = "50px"
+                    whitePawn[j].style.maxHeight = "50px"
+                    whitePawn[j].addEventListener("dragstart", dragStart)
+
+                    document.querySelector("chessboard").children.item(j + 48).appendChild(whitePawn[j])
+
+                }
+            }
+
+            chesspiecesvalue[i].id = chesspiecesname[i]
+            chesspiecesvalue[i].src = `./chesspieces/${chesspiecesname[i].charAt(0)}${chesspiecesname[i].charAt(5)}.svg`
+            chesspiecesvalue[i].draggable = true
+            chesspiecesvalue[i].style.maxWidth = "50px"
+            chesspiecesvalue[i].style.maxHeight = "50px"
+            chesspiecesvalue[i].addEventListener("dragstart", dragStart)
+
         }
 
-        document.body.appendChild(blackKing)
-
+        function dragStart(ev) {
+            ev.dataTransfer.setData("text", ev.target.id)
+        }
 
     }
 
