@@ -83,6 +83,7 @@ document.querySelector("#startGame").onclick = () => {
                     else {
                         Pawn[j].src = `./chesspieces/wP.svg`
                     }
+
                     Pawn[j].draggable = true
                     Pawn[j].style.maxWidth = "50px"
                     Pawn[j].style.maxHeight = "50px"
@@ -130,6 +131,150 @@ document.querySelector("#startGame").onclick = () => {
                         document.querySelector("chessboard").children.item(j + 60).appendChild(King[j])
                     }
                 }   
+            }
+
+
+            else if (chesspiecesname[i] == "blackBishop" || chesspiecesname[i] == "whiteBishop") {
+                Bishop = []
+
+                for (let k = 0; k < 2; k++ ) {
+                    Bishop[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 2; j++) {
+                    Bishop[j].id = chesspiecesname[i] + j
+
+                    if (chesspiecesname[i] == "blackBishop")
+                    {
+                        Bishop[j].src = `./chesspieces/bB.svg`
+                    }
+                    else {
+                        Bishop[j].src = `./chesspieces/wB.svg`
+                    }
+                    Bishop[j].draggable = true
+                    Bishop[j].style.maxWidth = "50px"
+                    Bishop[j].style.maxHeight = "50px"
+                    Bishop[j].addEventListener("dragstart", dragStart)
+                    
+                    if (Bishop[j].id == "blackBishop0") {
+                        document.querySelector("chessboard").children.item(2).appendChild(Bishop[j])
+                    }
+                    else if (Bishop[j].id == "blackBishop1") {
+                        document.querySelector("chessboard").children.item(5).appendChild(Bishop[j])
+                    }
+                    else if (Bishop[j].id == "whiteBishop0") {
+                        document.querySelector("chessboard").children.item(58).appendChild(Bishop[j])
+                    }
+                    else {
+                        document.querySelector("chessboard").children.item(61).appendChild(Bishop[j])
+                    }
+                }   
+            }
+
+            else if (chesspiecesname[i] == "blackQueen" || chesspiecesname[i] == "whiteQueen") {
+                Queen = []
+
+                for (let k = 0; k < 1; k++ ) {
+                    Queen[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 1; j++) {
+                    Queen[j].id = chesspiecesname[i] + j
+
+                    if (chesspiecesname[i] == "blackQueen")
+                    {
+                        Queen[j].src = `./chesspieces/bQ.svg`
+                    }
+                    else {
+                        Queen[j].src = `./chesspieces/wQ.svg`
+                    }
+                    Queen[j].draggable = true
+                    Queen[j].style.maxWidth = "50px"
+                    Queen[j].style.maxHeight = "50px"
+                    Queen[j].addEventListener("dragstart", dragStart)
+                    
+                    if (chesspiecesname[i] == "blackQueen") {
+                        document.querySelector("chessboard").children.item(j + 3).appendChild(Queen[j])
+                    }
+                    else {
+                        document.querySelector("chessboard").children.item(j + 59).appendChild(Queen[j])
+                    }
+                }
+            }
+
+            else if (chesspiecesname[i] == "blackKnight" || chesspiecesname[i] == "whiteKnight") {
+                Knight = []
+
+                for (let k = 0; k < 2; k++ ) {
+                    Knight[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 2; j++) {
+                    Knight[j].id = chesspiecesname[i] + j
+
+                    if (chesspiecesname[i] == "blackKnight")
+                    {
+                        Knight[j].src = `./chesspieces/bN.svg`
+                    }
+                    else {
+                        Knight[j].src = `./chesspieces/wN.svg`
+                    }
+                    Knight[j].draggable = true
+                    Knight[j].style.maxWidth = "50px"
+                    Knight[j].style.maxHeight = "50px"
+                    Knight[j].addEventListener("dragstart", dragStart)
+                    
+                    if (Knight[j].id == "blackKnight0") {
+                        document.querySelector("chessboard").children.item(1).appendChild(Knight[j])
+                    }
+                    else if (Knight[j].id == "blackKnight1") {
+                        document.querySelector("chessboard").children.item(6).appendChild(Knight[j])
+                    }
+                    else if (Knight[j].id == "whiteKnight0") {
+                        document.querySelector("chessboard").children.item(57).appendChild(Knight[j])
+                    }
+                    else {
+                        document.querySelector("chessboard").children.item(62).appendChild(Knight[j])
+                    }
+                }
+            }
+
+            else if (chesspiecesname[i] == "blackRook" || chesspiecesname[i] == "whiteRook") {
+
+                Rook = []
+
+                for (let k = 0; k < 2; k++ ) {
+                    Rook[k] = document.createElement('img')
+                }
+
+                for (let j =0 ; j < 2; j++) {
+                    Rook[j].id = chesspiecesname[i] + j
+
+                    if (chesspiecesname[i] == "blackRook")
+                    {
+                        Rook[j].src = `./chesspieces/bR.svg`
+                    }
+                    else {
+                        Rook[j].src = `./chesspieces/wR.svg`
+                    }
+                    Rook[j].draggable = true
+                    Rook[j].style.maxWidth = "50px"
+                    Rook[j].style.maxHeight = "50px"
+                    Rook[j].addEventListener("dragstart", dragStart)
+                    
+                    if (Rook[j].id == "blackRook0") {
+                        document.querySelector("chessboard").children.item(0).appendChild(Rook[j])
+                    }
+                    else if (Rook[j].id == "blackRook1") {
+                        document.querySelector("chessboard").children.item(7).appendChild(Rook[j])
+                    }
+                    else if (Rook[j].id == "whiteRook0") {
+                        document.querySelector("chessboard").children.item(56).appendChild(Rook[j])
+                    }
+                    else {
+                        document.querySelector("chessboard").children.item(63).appendChild(Rook[j])
+                    }
+                }
             }
         }
 
