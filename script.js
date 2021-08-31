@@ -4,6 +4,7 @@ document.querySelector("#startGame").onclick = () => {
     window.scrollTo(0,document.body.scrollHeight);
 
     if (!executed) {
+        
     document.querySelector("chessboard").style.gridTemplateColumns = "repeat(8, auto)"
 
     document.querySelector("chessboard").style.gridTemplateRows = "repeat(8, auto)"
@@ -17,6 +18,10 @@ document.querySelector("#startGame").onclick = () => {
         div = document.createElement('div')
 
         div.className = "square"
+
+
+
+        div.id = `square${i + 1}`
 
 
         div.style.maxWidth = "71px"
@@ -37,12 +42,22 @@ document.querySelector("#startGame").onclick = () => {
             ev.preventDefault();
             let data = ev.dataTransfer.getData("text")
             console.log(data)
-            ev.target.appendChild(document.getElementById(data))
+            if (ev.target.classList.contains("square")) {
+                ev.target.innerHTML = ""
+                ev.target.appendChild(document.getElementById(data))
+            }
+            if (ev.target.getAttribute("draggable") == true) {
+                ev.target.parentElement.innerHTML = ""
+                ev.target.appendChild(document.getElementById(data))
+            }
+
         }
 
         div.ondragover = (ev) => {
             ev.preventDefault();
         }
+
+
 
         document.querySelector("chessboard").
         appendChild(div)
@@ -278,9 +293,6 @@ document.querySelector("#startGame").onclick = () => {
             }
         }
 
-
-
-
         function dragStart(ev) {
             ev.dataTransfer.setData("text", ev.target.id)
         }
@@ -288,9 +300,9 @@ document.querySelector("#startGame").onclick = () => {
     }
 
     chesspieces()
-    
-    executed = true
 
+
+    executed = true
     }
 }
 
