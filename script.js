@@ -36,7 +36,26 @@ document.querySelector("#startGame").onclick = () => {
         div.style.backgroundColor = backgroundColor
 
 
-        backgroundColor === 'white' ? div.style.color = 'black' : div.style.color = 'white'
+        backgroundColor === 'white' ? div.style.color = 'black' : div.style.color = 'white'        
+        
+        div.ondragstart = (ev) => {
+            let compStyles = window.getComputedStyle(ev.target.parentElement)
+            let previousColor = compStyles.getPropertyValue("background-color")
+            localStorage.setItem("style",previousColor)
+            ev.target.style.opacity = 0.5
+
+        }
+
+        div.ondragend = (ev) => {
+            ev.target.style.opacity = ""
+        }
+
+        div.ondragover = (ev) => {
+            ev.preventDefault();
+        }      
+
+        div.ondragenter = (ev) => {
+        }
 
         div.ondrop = (ev) => {
             ev.preventDefault();
@@ -51,11 +70,10 @@ document.querySelector("#startGame").onclick = () => {
                 ev.target.appendChild(document.getElementById(data))
             }
 
+
         }
 
-        div.ondragover = (ev) => {
-            ev.preventDefault();
-        }
+  
 
 
 
@@ -103,6 +121,7 @@ document.querySelector("#startGame").onclick = () => {
                     Pawn[j].style.maxWidth = "50px"
                     Pawn[j].style.maxHeight = "50px"
                     Pawn[j].addEventListener("dragstart", dragStart)
+                    Pawn[j].addEventListener("dragover",dragOver)
                     
                     if (chesspiecesname[i] == "blackPawn") {
                         document.querySelector("chessboard").children.item(j + 8).appendChild(Pawn[j])
@@ -138,6 +157,7 @@ document.querySelector("#startGame").onclick = () => {
                     King[j].style.maxWidth = "50px"
                     King[j].style.maxHeight = "50px"
                     King[j].addEventListener("dragstart", dragStart)
+                    King[j].addEventListener("dragover",dragOver)
                     
                     if (chesspiecesname[i] == "blackKing") {
                         document.querySelector("chessboard").children.item(j + 4).appendChild(King[j])
@@ -170,6 +190,7 @@ document.querySelector("#startGame").onclick = () => {
                     Bishop[j].style.maxWidth = "50px"
                     Bishop[j].style.maxHeight = "50px"
                     Bishop[j].addEventListener("dragstart", dragStart)
+                    Bishop[j].addEventListener("dragover",dragOver)
                     
                     if (Bishop[j].id == "blackBishop0") {
                         document.querySelector("chessboard").children.item(2).appendChild(Bishop[j])
@@ -207,6 +228,7 @@ document.querySelector("#startGame").onclick = () => {
                     Queen[j].style.maxWidth = "50px"
                     Queen[j].style.maxHeight = "50px"
                     Queen[j].addEventListener("dragstart", dragStart)
+                    Queen[j].addEventListener("dragover",dragOver)
                     
                     if (chesspiecesname[i] == "blackQueen") {
                         document.querySelector("chessboard").children.item(j + 3).appendChild(Queen[j])
@@ -238,6 +260,7 @@ document.querySelector("#startGame").onclick = () => {
                     Knight[j].style.maxWidth = "50px"
                     Knight[j].style.maxHeight = "50px"
                     Knight[j].addEventListener("dragstart", dragStart)
+                    Knight[j].addEventListener("dragover",dragOver)
                     
                     if (Knight[j].id == "blackKnight0") {
                         document.querySelector("chessboard").children.item(1).appendChild(Knight[j])
@@ -276,6 +299,7 @@ document.querySelector("#startGame").onclick = () => {
                     Rook[j].style.maxWidth = "50px"
                     Rook[j].style.maxHeight = "50px"
                     Rook[j].addEventListener("dragstart", dragStart)
+                    Rook[j].addEventListener("dragover",dragOver)
                     
                     if (Rook[j].id == "blackRook0") {
                         document.querySelector("chessboard").children.item(0).appendChild(Rook[j])
@@ -295,6 +319,10 @@ document.querySelector("#startGame").onclick = () => {
 
         function dragStart(ev) {
             ev.dataTransfer.setData("text", ev.target.id)
+        }
+
+        function dragOver(ev) {
+            ev.stopPropagation()
         }
 
     }
