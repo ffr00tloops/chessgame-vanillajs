@@ -1,3 +1,4 @@
+// Game Logic
 executed = false;
 document.querySelector("#startGame").onclick = () => {
 
