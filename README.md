@@ -6,4 +6,4 @@ Simply drag your chesspiece to the opponent's piece in order to take them.
 
 In order to run just simply install the source code and click the file named index.html
 
-![Alt Text](https://im7.ezgif.com/tmp/ezgif-7-3b30b99c6461.gif)
+![convertogif](https://user-images.githubusercontent.com/68136647/143029655-a203594d-9497-4c48-a599-101ca3cf86ea.gif)
